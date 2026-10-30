@@ -6,18 +6,38 @@ import { TaskDrawer } from '../drawer/TaskDrawer'
 import { useTasks } from '../../context/TaskContext'
 
 export const AppShell: React.FC = () => {
-  const { selectedTaskId, setSelectedTaskId } = useTasks()
+  const { selectedTaskId, setSelectedTaskId, searchQuery, setSearchQuery } = useTasks()
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && selectedTaskId) {
-        setSelectedTaskId(null)
+      // Ctrl+F or Cmd+F: focus search
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'f') {
+        e.preventDefault()
+        const searchInput = document.querySelector<HTMLInputElement>('input[placeholder*="Search"], input[placeholder*="جستجو"]')
+        searchInput?.focus()
+        return
+      }
+
+      // Ctrl+N or Cmd+N: focus quick add
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'n') {
+        e.preventDefault()
+        const addInput = document.querySelector<HTMLInputElement>('form input[type="text"]')
+        addInput?.focus()
+        return
+      }
+
+      if (e.key === 'Escape') {
+        if (selectedTaskId) {
+          setSelectedTaskId(null)
+        } else if (searchQuery) {
+          setSearchQuery('')
+        }
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [selectedTaskId, setSelectedTaskId])
+  }, [selectedTaskId, setSelectedTaskId, searchQuery, setSearchQuery])
 
   return (
     <div className="flex flex-col h-screen w-screen overflow-hidden bg-slate-100 text-slate-800">

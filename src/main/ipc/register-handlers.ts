@@ -1,4 +1,4 @@
-import { ipcMain, BrowserWindow } from 'electron'
+import { ipcMain, BrowserWindow, Notification } from 'electron'
 import { IPC_CHANNELS } from '@core/ipc/channels'
 import { ITaskRepository, IListRepository, CreateTaskInput, CreateListInput } from '@core/ports'
 import { Task, SubTask, TaskList } from '@core/domain/entities'
@@ -113,5 +113,36 @@ export function registerIpcHandlers(
   ipcMain.handle(IPC_CHANNELS.WINDOW_CLOSE, async () => {
     const win = mainWindowProvider()
     if (win) win.close()
+  })
+
+  // Notifications & Backup
+  ipcMain.handle(IPC_CHANNELS.NOTIFICATION_SHOW, async (_, title: string, body: string) => {
+    if (Notification.isSupported()) {
+      new Notification({ title, body }).show()
+    }
+  })
+
+  ipcMain.handle(IPC_CHANNELS.BACKUP_EXPORT, async () => {
+    const [tasks, lists] = await Promise.all([taskRepo.getAll(), listRepo.getAll()])
+    return JSON.stringify(
+      { version: '2.0.0', exportedAt: new Date().toISOString(), tasks, lists },
+      null,
+      2
+    )
+  })
+
+  ipcMain.handle(IPC_CHANNELS.BACKUP_IMPORT, async (_, jsonData: string) => {
+    try {
+      const parsed = JSON.parse(jsonData)
+      if (Array.isArray(parsed.tasks)) {
+        for (const t of parsed.tasks) {
+          await taskRepo.create(t)
+        }
+        return true
+      }
+      return false
+    } catch {
+      return false
+    }
   })
 }

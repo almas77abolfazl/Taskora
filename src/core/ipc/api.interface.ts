@@ -32,4 +32,9 @@ export interface IElectronAPI {
     maximize(): Promise<void>
     close(): Promise<void>
   }
+  productivity: {
+    showNotification(title: string, body: string): Promise<void>
+    exportBackup(): Promise<string>
+    importBackup(jsonData: string): Promise<boolean>
+  }
 }

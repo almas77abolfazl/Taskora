@@ -8,9 +8,9 @@ describe('IPC Channel Contracts', () => {
     expect(channels.length).toBe(uniqueChannels.size)
   })
 
-  it('adheres to scoped namespace conventions (task:*, list:*, window:*)', () => {
+  it('adheres to scoped namespace conventions (task:*, list:*, window:*, notification:*, backup:*)', () => {
     Object.values(IPC_CHANNELS).forEach((channel) => {
-      expect(channel).toMatch(/^(task|list|window):[a-z-]+$/)
+      expect(channel).toMatch(/^(task|list|window|notification|backup):[a-z-]+$/)
     })
   })
 })

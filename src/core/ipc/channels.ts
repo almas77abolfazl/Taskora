@@ -26,5 +26,10 @@ export const IPC_CHANNELS = {
   // Window Controls
   WINDOW_MINIMIZE: 'window:minimize',
   WINDOW_MAXIMIZE: 'window:maximize',
-  WINDOW_CLOSE: 'window:close'
+  WINDOW_CLOSE: 'window:close',
+
+  // Productivity, Notifications & Backup
+  NOTIFICATION_SHOW: 'notification:show',
+  BACKUP_EXPORT: 'backup:export',
+  BACKUP_IMPORT: 'backup:import'
 } as const

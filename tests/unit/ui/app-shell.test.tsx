@@ -65,6 +65,11 @@ describe('App Shell & Microsoft To Do UI Components', () => {
         minimize: vi.fn(),
         maximize: vi.fn(),
         close: vi.fn()
+      },
+      productivity: {
+        showNotification: vi.fn(),
+        exportBackup: vi.fn(),
+        importBackup: vi.fn()
       }
     }
   })

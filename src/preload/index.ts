@@ -38,6 +38,13 @@ export const api: IElectronAPI = {
     minimize: (): Promise<void> => ipcRenderer.invoke(IPC_CHANNELS.WINDOW_MINIMIZE),
     maximize: (): Promise<void> => ipcRenderer.invoke(IPC_CHANNELS.WINDOW_MAXIMIZE),
     close: (): Promise<void> => ipcRenderer.invoke(IPC_CHANNELS.WINDOW_CLOSE)
+  },
+  productivity: {
+    showNotification: (title: string, body: string): Promise<void> =>
+      ipcRenderer.invoke(IPC_CHANNELS.NOTIFICATION_SHOW, title, body),
+    exportBackup: (): Promise<string> => ipcRenderer.invoke(IPC_CHANNELS.BACKUP_EXPORT),
+    importBackup: (jsonData: string): Promise<boolean> =>
+      ipcRenderer.invoke(IPC_CHANNELS.BACKUP_IMPORT, jsonData)
   }
 }
 
