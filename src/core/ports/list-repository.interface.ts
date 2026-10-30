@@ -14,3 +14,4 @@ export interface IListRepository {
   delete(id: string): Promise<boolean>
   reorder(orderedIds: string[]): Promise<void>
 }
+

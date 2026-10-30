@@ -22,3 +22,4 @@ In early Electron versions, applications commonly enabled `nodeIntegration: true
 - **Security:** Renderer process cannot execute arbitrary filesystem or OS calls.
 - **Maintainability:** Refactoring an IPC contract causes immediate compile-time errors in TypeScript across both main and renderer processes.
 - **Testability:** The renderer can be tested in isolation with JSDOM by mocking `window.api`.
+

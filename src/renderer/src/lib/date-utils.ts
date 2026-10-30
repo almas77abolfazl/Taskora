@@ -50,3 +50,4 @@ export function formatRelativeDate(dateInput: string | Date, locale: 'en' | 'fa'
   if (diffDays === -1) return 'Yesterday'
   return formatDate(date, 'en')
 }
+

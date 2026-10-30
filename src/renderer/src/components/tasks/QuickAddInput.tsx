@@ -58,3 +58,4 @@ export const QuickAddInput: React.FC = () => {
     </form>
   )
 }
+

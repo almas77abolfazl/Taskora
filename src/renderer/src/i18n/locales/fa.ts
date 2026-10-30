@@ -50,3 +50,4 @@ export const fa: TranslationDictionary = {
   emptySearchTitle: 'موردی مطابق با جستجوی شما پیدا نشد.',
   completedTasks: 'انجام شده'
 }
+

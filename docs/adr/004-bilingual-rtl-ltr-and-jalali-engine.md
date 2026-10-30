@@ -22,3 +22,4 @@ Desktop applications built for Persian-speaking software engineers frequently su
 - **Instant Language Switching:** Zero page reload needed to swap language or direction.
 - **Accuracy:** Native Jalali dates are correctly calculated without heavy legacy calendar libraries.
 - **Consistent UX:** High-fidelity RTL typography mirroring Microsoft To Do and Linear desktop standards.
+

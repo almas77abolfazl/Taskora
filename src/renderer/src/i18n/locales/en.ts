@@ -50,3 +50,4 @@ export const en: TranslationDictionary = {
   emptySearchTitle: 'No tasks match your search.',
   completedTasks: 'Completed'
 }
+

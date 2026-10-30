@@ -78,3 +78,4 @@ describe('Offline Local File Storage (TDD)', () => {
     expect(Object.keys(parsed).length).toBe(4)
   })
 })
+

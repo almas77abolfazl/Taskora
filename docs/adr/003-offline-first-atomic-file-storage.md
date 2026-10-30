@@ -23,3 +23,4 @@ A desktop task manager must function 100% offline without requiring internet acc
 - **Zero Data Loss:** Even in unexpected power interruptions, the active JSON database file is never left half-written.
 - **Portability:** Users can export and import complete backups as JSON.
 - **Independence:** Zero external database daemon dependencies (no Redis, no external native compilation hurdles).
+
