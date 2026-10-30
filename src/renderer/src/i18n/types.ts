@@ -1,0 +1,57 @@
+export type Locale = 'en' | 'fa'
+
+export interface TranslationDictionary {
+  // Navigation & Lists
+  myDay: string
+  important: string
+  planned: string
+  tasks: string
+  customLists: string
+  newList: string
+  newListPlaceholder: string
+
+  // Actions
+  addTask: string
+  addTaskPlaceholder: string
+  add: string
+  cancel: string
+  save: string
+  delete: string
+  edit: string
+  rename: string
+  search: string
+  searchPlaceholder: string
+
+  // Task Details
+  steps: string
+  addStep: string
+  addToMyDay: string
+  addedToMyDay: string
+  remindMe: string
+  dueDate: string
+  repeat: string
+  addNote: string
+  notePlaceholder: string
+  createdOn: string
+  completedOn: string
+  deleteTask: string
+  deleteList: string
+  deleteListConfirm: string
+
+  // Dates
+  today: string
+  tomorrow: string
+  nextWeek: string
+  pickDate: string
+  noDueDate: string
+
+  // Settings & App
+  settings: string
+  language: string
+  english: string
+  persian: string
+  emptyTasksTitle: string
+  emptyTasksSubtitle: string
+  emptySearchTitle: string
+  completedTasks: string
+}

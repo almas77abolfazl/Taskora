@@ -1,0 +1,52 @@
+import { TranslationDictionary } from '../types'
+
+export const en: TranslationDictionary = {
+  myDay: 'My Day',
+  important: 'Important',
+  planned: 'Planned',
+  tasks: 'Tasks',
+  customLists: 'Lists',
+  newList: 'New list',
+  newListPlaceholder: 'List name',
+
+  addTask: 'Add a task',
+  addTaskPlaceholder: 'Add a task to',
+  add: 'Add',
+  cancel: 'Cancel',
+  save: 'Save',
+  delete: 'Delete',
+  edit: 'Edit',
+  rename: 'Rename',
+  search: 'Search',
+  searchPlaceholder: 'Search tasks and notes',
+
+  steps: 'Steps',
+  addStep: 'Next step',
+  addToMyDay: 'Add to My Day',
+  addedToMyDay: 'Added to My Day',
+  remindMe: 'Remind me',
+  dueDate: 'Add due date',
+  repeat: 'Repeat',
+  addNote: 'Add note',
+  notePlaceholder: 'Add notes about this task...',
+  createdOn: 'Created',
+  completedOn: 'Completed',
+  deleteTask: 'Delete task',
+  deleteList: 'Delete list',
+  deleteListConfirm: 'Are you sure you want to delete this list? All tasks inside it will be permanently deleted.',
+
+  today: 'Today',
+  tomorrow: 'Tomorrow',
+  nextWeek: 'Next week',
+  pickDate: 'Pick a date',
+  noDueDate: 'No due date',
+
+  settings: 'Settings',
+  language: 'Language',
+  english: 'English',
+  persian: 'فارسی',
+  emptyTasksTitle: 'All tasks completed',
+  emptyTasksSubtitle: 'Enjoy your free time or add a new task to get started.',
+  emptySearchTitle: 'No tasks match your search.',
+  completedTasks: 'Completed'
+}

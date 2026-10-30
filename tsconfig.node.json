@@ -5,6 +5,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "strict": true,
+    "jsx": "react-jsx",
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
@@ -25,7 +26,8 @@
       "@core/*": ["src/core/*"],
       "@infrastructure/*": ["src/infrastructure/*"],
       "@main/*": ["src/main/*"],
-      "@preload/*": ["src/preload/*"]
+      "@preload/*": ["src/preload/*"],
+      "@renderer/*": ["src/renderer/src/*"]
     }
   },
   "include": [
@@ -35,6 +37,7 @@
     "src/preload/**/*",
     "src/core/**/*",
     "src/infrastructure/**/*",
+    "src/renderer/src/**/*",
     "tests/**/*"
   ]
 }
