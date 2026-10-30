@@ -3,6 +3,7 @@
     "composite": true,
     "target": "ESNext",
     "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
     "moduleResolution": "bundler",
     "strict": true,
     "jsx": "react-jsx",
@@ -31,6 +32,7 @@
     }
   },
   "include": [
+    "src/preload/index.d.ts",
     "electron.vite.config.*",
     "vitest.config.*",
     "src/main/**/*",

@@ -5,3 +5,5 @@ declare global {
     api: IElectronAPI
   }
 }
+
+export {}
