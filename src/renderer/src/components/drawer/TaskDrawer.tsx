@@ -88,19 +88,20 @@ export const TaskDrawer: React.FC = () => {
   const isMyDayActive = selectedTask.isMyDay && selectedTask.myDayDate === today
 
   return (
-    <div className="w-80 bg-white border-s border-slate-200 flex flex-col h-full shadow-lg z-10 shrink-0 select-none animate-in slide-in-from-right duration-200">
+    <div className="w-76 bg-white border-s border-slate-200/80 flex flex-col h-full shadow-xs z-10 shrink-0 select-none font-sans">
       {/* Drawer Header */}
-      <div className="p-4 border-b border-slate-200/80 flex items-start gap-3">
+      <div className="p-3.5 border-b border-slate-200/60 flex items-start gap-2.5">
         {/* Completion checkbox */}
         <button
           onClick={() => toggleTaskComplete(selectedTask.id)}
-          className={`w-5 h-5 mt-1 rounded-full border flex items-center justify-center shrink-0 transition-all ${
+          className={`w-4.5 h-4.5 mt-0.5 rounded-full border flex items-center justify-center shrink-0 transition-all duration-150 ${
             selectedTask.completed
-              ? 'bg-blue-600 border-blue-600 text-white'
-              : 'border-slate-300 hover:border-blue-600 text-transparent hover:text-slate-400'
+              ? 'bg-slate-700 border-slate-700 text-white'
+              : 'border-slate-300 hover:border-slate-600 text-transparent hover:text-slate-400 bg-white'
           }`}
+          title={selectedTask.completed ? 'Mark incomplete' : 'Mark complete'}
         >
-          <Check className="w-3 h-3 stroke-[2.5]" />
+          <Check className="w-2.5 h-2.5 stroke-[3]" />
         </button>
 
         {/* Editable Title */}
@@ -109,20 +110,22 @@ export const TaskDrawer: React.FC = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           onBlur={handleTitleBlur}
-          className={`flex-1 text-sm font-semibold bg-transparent border-0 focus:outline-none focus:ring-1 focus:ring-blue-500 rounded px-1 py-0.5 ${
-            selectedTask.completed ? 'line-through text-slate-400' : 'text-slate-800'
+          className={`flex-1 text-xs sm:text-[13px] font-semibold bg-transparent border-0 focus:outline-none focus:ring-1 focus:ring-slate-300 rounded px-1 py-0.5 ${
+            selectedTask.completed ? 'line-through text-slate-400 font-normal' : 'text-slate-900'
           }`}
         />
 
         {/* Star Button */}
         <button
           onClick={() => toggleTaskImportant(selectedTask.id)}
-          className="p-1 rounded text-slate-400 hover:text-red-500 transition-colors"
+          className={`p-1 rounded text-slate-300 hover:text-amber-500 transition-colors ${
+            selectedTask.isImportant ? 'text-amber-500' : ''
+          }`}
           title="Important"
         >
           <Star
             className={`w-4 h-4 ${
-              selectedTask.isImportant ? 'fill-red-500 text-red-500' : 'stroke-[1.5]'
+              selectedTask.isImportant ? 'fill-amber-500 text-amber-500' : 'stroke-[1.5]'
             }`}
           />
         </button>
@@ -133,35 +136,35 @@ export const TaskDrawer: React.FC = () => {
           className="p-1 rounded text-slate-400 hover:text-slate-600 transition-colors"
           title={t('cancel')}
         >
-          <X className="w-4 h-4" />
+          <X className="w-3.5 h-3.5" />
         </button>
       </div>
 
       {/* Drawer Body */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-3.5 space-y-3">
         {/* Subtasks (Steps) */}
-        <div className="bg-slate-50/80 rounded-xl p-3 border border-slate-200/70 space-y-2">
-          <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">
+        <div className="bg-slate-50/70 rounded-lg p-2.5 border border-slate-200/60 space-y-1.5">
+          <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">
             {t('steps')}
           </span>
 
           {selectedTask.subtasks.map((step) => (
             <div
               key={step.id}
-              className="flex items-center justify-between gap-2 py-1 group"
+              className="flex items-center justify-between gap-2 py-0.5 group"
             >
               <div className="flex items-center gap-2 flex-1 min-w-0">
                 <button
                   onClick={() =>
                     updateSubTask(selectedTask.id, step.id, { completed: !step.completed })
                   }
-                  className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 transition-colors ${
+                  className={`w-3.5 h-3.5 rounded border flex items-center justify-center shrink-0 transition-colors ${
                     step.completed
-                      ? 'bg-blue-600 border-blue-600 text-white'
-                      : 'border-slate-300 text-transparent hover:text-slate-400'
+                      ? 'bg-slate-700 border-slate-700 text-white'
+                      : 'border-slate-300 text-transparent hover:text-slate-400 bg-white'
                   }`}
                 >
-                  <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                  <Check className="w-2 h-2 stroke-[3]" />
                 </button>
                 <span
                   className={`text-xs truncate ${
@@ -174,16 +177,16 @@ export const TaskDrawer: React.FC = () => {
 
               <button
                 onClick={() => deleteSubTask(selectedTask.id, step.id)}
-                className="opacity-0 group-hover:opacity-100 p-0.5 text-slate-400 hover:text-red-600 transition-opacity"
+                className="opacity-0 group-hover:opacity-100 p-0.5 text-slate-400 hover:text-rose-600 transition-opacity"
               >
-                <X className="w-3.5 h-3.5" />
+                <X className="w-3 h-3" />
               </button>
             </div>
           ))}
 
           {/* Add Step Input */}
-          <form onSubmit={handleAddStep} className="pt-1 flex items-center gap-2">
-            <Plus className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+          <form onSubmit={handleAddStep} className="pt-0.5 flex items-center gap-2">
+            <Plus className="w-3 h-3 text-slate-500 shrink-0" />
             <input
               type="text"
               value={newStepTitle}
@@ -197,46 +200,46 @@ export const TaskDrawer: React.FC = () => {
         {/* Add to My Day Action */}
         <button
           onClick={() => toggleTaskMyDay(selectedTask.id)}
-          className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border text-xs font-medium transition-colors ${
+          className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg border text-xs font-medium transition-colors ${
             isMyDayActive
-              ? 'bg-blue-50 border-blue-200 text-blue-700'
-              : 'bg-white border-slate-200/80 text-slate-700 hover:bg-slate-50'
+              ? 'bg-blue-50/80 border-blue-200 text-blue-700'
+              : 'bg-white border-slate-200/70 text-slate-700 hover:bg-slate-50'
           }`}
         >
-          <Sun className={`w-4 h-4 ${isMyDayActive ? 'text-blue-600' : 'text-slate-400'}`} />
+          <Sun className={`w-3.5 h-3.5 ${isMyDayActive ? 'text-blue-600' : 'text-slate-400'}`} />
           <span>{isMyDayActive ? t('addedToMyDay') : t('addToMyDay')}</span>
         </button>
 
         {/* Due Date Presets */}
-        <div className="bg-white rounded-xl border border-slate-200/80 p-3 space-y-2">
+        <div className="bg-white rounded-lg border border-slate-200/70 p-2.5 space-y-2">
           <div className="flex items-center justify-between text-xs">
             <div className="flex items-center gap-2 text-slate-700 font-medium">
-              <Calendar className="w-4 h-4 text-slate-400" />
+              <Calendar className="w-3.5 h-3.5 text-slate-400" />
               <span>{t('dueDate')}</span>
             </div>
             {selectedTask.dueDate && (
-              <span className="text-[11px] text-blue-600 font-semibold">
+              <span className="text-[11px] text-slate-600 font-medium">
                 {formatDate(selectedTask.dueDate)}
               </span>
             )}
           </div>
 
-          <div className="grid grid-cols-3 gap-1.5 pt-1">
+          <div className="grid grid-cols-3 gap-1 pt-0.5">
             <button
               onClick={() => handleSetDueDate('today')}
-              className="px-2 py-1.5 text-[11px] rounded bg-slate-50 border border-slate-200 hover:bg-slate-100 text-slate-700 text-center font-medium transition-colors"
+              className="px-2 py-1 text-[11px] rounded bg-slate-50 border border-slate-200/80 hover:bg-slate-100 text-slate-700 text-center font-medium transition-colors"
             >
               {t('today')}
             </button>
             <button
               onClick={() => handleSetDueDate('tomorrow')}
-              className="px-2 py-1.5 text-[11px] rounded bg-slate-50 border border-slate-200 hover:bg-slate-100 text-slate-700 text-center font-medium transition-colors"
+              className="px-2 py-1 text-[11px] rounded bg-slate-50 border border-slate-200/80 hover:bg-slate-100 text-slate-700 text-center font-medium transition-colors"
             >
               {t('tomorrow')}
             </button>
             <button
               onClick={() => handleSetDueDate('nextWeek')}
-              className="px-2 py-1.5 text-[11px] rounded bg-slate-50 border border-slate-200 hover:bg-slate-100 text-slate-700 text-center font-medium transition-colors"
+              className="px-2 py-1 text-[11px] rounded bg-slate-50 border border-slate-200/80 hover:bg-slate-100 text-slate-700 text-center font-medium transition-colors"
             >
               {t('nextWeek')}
             </button>
@@ -245,7 +248,7 @@ export const TaskDrawer: React.FC = () => {
           {selectedTask.dueDate && (
             <button
               onClick={() => handleSetDueDate('clear')}
-              className="w-full text-[11px] text-slate-500 hover:text-red-600 pt-1 text-center transition-colors block"
+              className="w-full text-[10px] text-slate-400 hover:text-rose-600 pt-0.5 text-center transition-colors block"
             >
               {t('noDueDate')}
             </button>
@@ -253,8 +256,8 @@ export const TaskDrawer: React.FC = () => {
         </div>
 
         {/* Notes */}
-        <div className="bg-white rounded-xl border border-slate-200/80 p-3 space-y-2">
-          <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">
+        <div className="bg-white rounded-lg border border-slate-200/70 p-2.5 space-y-1.5">
+          <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">
             {t('addNote')}
           </span>
           <textarea
@@ -263,26 +266,25 @@ export const TaskDrawer: React.FC = () => {
             onBlur={handleNotesBlur}
             placeholder={t('notePlaceholder')}
             rows={4}
-            className="w-full text-xs bg-slate-50/50 rounded-lg p-2.5 border border-slate-200/80 text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500 resize-none"
+            className="w-full text-xs bg-slate-50/40 rounded p-2 border border-slate-200 text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-300 resize-none"
           />
         </div>
       </div>
 
       {/* Drawer Footer */}
-      <div className="p-3 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-400 bg-slate-50">
+      <div className="p-2.5 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-slate-400 bg-slate-50/60">
         <span>
           {t('createdOn')} {formatDate(selectedTask.createdAt)}
         </span>
 
         <button
           onClick={handleDeleteTask}
-          className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+          className="p-1 rounded text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors"
           title={t('deleteTask')}
         >
-          <Trash2 className="w-4 h-4" />
+          <Trash2 className="w-3.5 h-3.5" />
         </button>
       </div>
     </div>
   )
 }
-

@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react'
 import { Task, SubTask, TaskList, SYSTEM_LIST_IDS } from '@core/domain/entities'
 import { getTodayString } from '../lib/date-utils'
+import { playCompletionSound } from '../lib/sound'
 
 interface TaskContextValue {
   tasks: Task[]
@@ -141,7 +142,11 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const toggleTaskComplete = async (id: string): Promise<void> => {
     const task = tasks.find((t) => t.id === id)
     if (!task) return
-    await updateTask(id, { completed: !task.completed })
+    const nextCompleted = !task.completed
+    if (nextCompleted) {
+      playCompletionSound()
+    }
+    await updateTask(id, { completed: nextCompleted })
   }
 
   const toggleTaskImportant = async (id: string): Promise<void> => {

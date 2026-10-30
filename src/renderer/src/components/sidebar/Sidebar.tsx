@@ -4,7 +4,6 @@ import {
   Star,
   Calendar,
   CheckSquare,
-  List as ListIcon,
   Plus,
   Trash2,
   Globe,
@@ -33,7 +32,7 @@ export const Sidebar: React.FC = () => {
 
   const today = getTodayString()
 
-  // Calculate counts for smart lists
+  // Calculate task counts
   const myDayCount = tasks.filter((t) => !t.completed && t.isMyDay && t.myDayDate === today).length
   const importantCount = tasks.filter((t) => !t.completed && t.isImportant).length
   const plannedCount = tasks.filter((t) => !t.completed && t.dueDate).length
@@ -44,37 +43,36 @@ export const Sidebar: React.FC = () => {
       id: SYSTEM_LIST_IDS.MY_DAY,
       title: t('myDay'),
       icon: Sun,
-      color: 'text-blue-500',
-      activeBg: 'bg-blue-50/80 text-blue-700 font-medium',
+      color: 'text-blue-600',
       count: myDayCount
     },
     {
       id: SYSTEM_LIST_IDS.IMPORTANT,
       title: t('important'),
       icon: Star,
-      color: 'text-red-500',
-      activeBg: 'bg-red-50/80 text-red-700 font-medium',
+      color: 'text-amber-500',
       count: importantCount
     },
     {
       id: SYSTEM_LIST_IDS.PLANNED,
       title: t('planned'),
       icon: Calendar,
-      color: 'text-emerald-500',
-      activeBg: 'bg-emerald-50/80 text-emerald-700 font-medium',
+      color: 'text-emerald-600',
       count: plannedCount
     },
     {
       id: SYSTEM_LIST_IDS.TASKS,
       title: t('tasks'),
       icon: CheckSquare,
-      color: 'text-indigo-500',
-      activeBg: 'bg-indigo-50/80 text-indigo-700 font-medium',
+      color: 'text-slate-700',
       count: tasksCount
     }
   ]
 
   const customLists = lists.filter((l) => !l.isSystem)
+
+  // Palette of subtle, elegant dots for custom lists
+  const dotColors = ['bg-indigo-500', 'bg-teal-500', 'bg-rose-500', 'bg-amber-500', 'bg-sky-500']
 
   const handleCreateList = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -89,31 +87,35 @@ export const Sidebar: React.FC = () => {
   }
 
   return (
-    <aside className="w-64 bg-slate-50 border-e border-slate-200 flex flex-col h-full select-none shrink-0">
-      {/* Search Bar */}
-      <div className="p-3 border-b border-slate-200/80">
+    <aside className="w-60 bg-[#f9fafb] border-e border-slate-200/70 flex flex-col h-full select-none shrink-0 font-sans">
+      {/* Search Bar with Shortcut hint */}
+      <div className="p-3 border-b border-slate-200/60">
         <div className="relative flex items-center">
-          <Search className="w-4 h-4 text-slate-400 absolute start-3 pointer-events-none" />
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute start-2.5 pointer-events-none" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={t('searchPlaceholder')}
-            className="w-full text-xs ps-9 pe-7 py-2 bg-white rounded-lg border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all"
+            className="w-full text-xs ps-8 pe-12 py-1.5 bg-white rounded-md border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-400 transition-all"
           />
-          {searchQuery && (
+          {searchQuery ? (
             <button
               onClick={() => setSearchQuery('')}
               className="absolute end-2 text-slate-400 hover:text-slate-600"
             >
               <X className="w-3.5 h-3.5" />
             </button>
+          ) : (
+            <span className="absolute end-2 text-[10px] text-slate-400 font-mono pointer-events-none border border-slate-200 rounded px-1">
+              ^F
+            </span>
           )}
         </div>
       </div>
 
       {/* Nav List Items */}
-      <div className="flex-1 overflow-y-auto px-2 py-3 space-y-1">
+      <div className="flex-1 overflow-y-auto px-2 py-2 space-y-0.5">
         {smartLists.map((item) => {
           const Icon = item.icon
           const isActive = activeListId === item.id && !searchQuery
@@ -125,16 +127,18 @@ export const Sidebar: React.FC = () => {
                 setSearchQuery('')
                 setActiveListId(item.id)
               }}
-              className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs transition-colors ${
-                isActive ? item.activeBg : 'text-slate-700 hover:bg-slate-200/60'
+              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs transition-colors duration-100 ${
+                isActive
+                  ? 'bg-slate-200/70 text-slate-900 font-semibold'
+                  : 'text-slate-700 hover:bg-slate-200/40 hover:text-slate-900'
               }`}
             >
-              <div className="flex items-center gap-3">
-                <Icon className={`w-4 h-4 ${item.color}`} />
+              <div className="flex items-center gap-2.5">
+                <Icon className={`w-4 h-4 ${item.color} stroke-[1.8]`} />
                 <span>{item.title}</span>
               </div>
               {item.count > 0 && (
-                <span className="text-[11px] font-semibold text-slate-500 bg-slate-200/80 px-1.5 py-0.5 rounded-full">
+                <span className="text-[11px] font-mono text-slate-500 px-1 py-0.2 rounded">
                   {item.count}
                 </span>
               )}
@@ -142,40 +146,40 @@ export const Sidebar: React.FC = () => {
           )
         })}
 
-        {/* Custom Lists Divider */}
-        <div className="pt-4 pb-1 px-3">
-          <div className="border-t border-slate-200/80 mb-2"></div>
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+        {/* Custom Lists Header */}
+        <div className="pt-4 pb-1 px-2.5 flex items-center justify-between">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
             {t('customLists')}
           </span>
         </div>
 
         {/* Custom Lists */}
-        {customLists.map((list) => {
+        {customLists.map((list, index) => {
           const isActive = activeListId === list.id && !searchQuery
           const count = tasks.filter((t) => !t.completed && t.listId === list.id).length
+          const dotColor = dotColors[index % dotColors.length]
 
           return (
             <div
               key={list.id}
-              className={`group flex items-center justify-between px-3 py-2 rounded-lg text-xs transition-colors cursor-pointer ${
+              className={`group flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs transition-colors duration-100 cursor-pointer ${
                 isActive
-                  ? 'bg-blue-50 text-blue-700 font-medium'
-                  : 'text-slate-700 hover:bg-slate-200/60'
+                  ? 'bg-slate-200/70 text-slate-900 font-semibold'
+                  : 'text-slate-700 hover:bg-slate-200/40 hover:text-slate-900'
               }`}
               onClick={() => {
                 setSearchQuery('')
                 setActiveListId(list.id)
               }}
             >
-              <div className="flex items-center gap-3 truncate">
-                <ListIcon className="w-4 h-4 text-slate-500 shrink-0" />
+              <div className="flex items-center gap-2.5 truncate">
+                <span className={`w-2 h-2 rounded-full shrink-0 ${dotColor}`} />
                 <span className="truncate">{list.title}</span>
               </div>
 
               <div className="flex items-center gap-1">
                 {count > 0 && (
-                  <span className="text-[11px] font-semibold text-slate-500 bg-slate-200/80 px-1.5 py-0.5 rounded-full">
+                  <span className="text-[11px] font-mono text-slate-500">
                     {count}
                   </span>
                 )}
@@ -186,10 +190,10 @@ export const Sidebar: React.FC = () => {
                       deleteList(list.id)
                     }
                   }}
-                  className="opacity-0 group-hover:opacity-100 p-1 hover:text-red-600 transition-opacity rounded"
+                  className="opacity-0 group-hover:opacity-100 p-0.5 hover:text-rose-600 transition-opacity rounded"
                   title={t('deleteList')}
                 >
-                  <Trash2 className="w-3.5 h-3.5" />
+                  <Trash2 className="w-3 h-3" />
                 </button>
               </div>
             </div>
@@ -198,7 +202,7 @@ export const Sidebar: React.FC = () => {
 
         {/* New List Form */}
         {isCreatingList ? (
-          <form onSubmit={handleCreateList} className="px-2 pt-2">
+          <form onSubmit={handleCreateList} className="px-1 pt-1.5">
             <input
               type="text"
               autoFocus
@@ -208,39 +212,38 @@ export const Sidebar: React.FC = () => {
                 if (e.key === 'Escape') setIsCreatingList(false)
               }}
               placeholder={t('newListPlaceholder')}
-              className="w-full text-xs px-3 py-2 bg-white rounded-lg border border-blue-400 text-slate-800 placeholder-slate-400 focus:outline-none ring-1 ring-blue-400"
+              className="w-full text-xs px-2.5 py-1.5 bg-white rounded-md border border-slate-400 text-slate-800 placeholder-slate-400 focus:outline-none ring-1 ring-slate-400 shadow-xs"
             />
           </form>
         ) : (
           <button
             onClick={() => setIsCreatingList(true)}
-            className="w-full flex items-center gap-3 px-3 py-2 text-xs text-slate-600 hover:text-blue-600 hover:bg-slate-200/60 rounded-lg transition-colors"
+            className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-slate-500 hover:text-slate-900 hover:bg-slate-200/40 rounded-md transition-colors"
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-3.5 h-3.5 text-slate-400" />
             <span>{t('newList')}</span>
           </button>
         )}
       </div>
 
-      {/* Footer: Language and Workspace info */}
-      <div className="p-3 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-500 bg-slate-100/60">
+      {/* Footer: Language toggle and Workspace badge */}
+      <div className="p-2.5 border-t border-slate-200/60 flex items-center justify-between text-xs text-slate-500 bg-slate-100/40">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-[10px]">
+          <div className="w-5 h-5 rounded-md bg-slate-800 text-slate-100 flex items-center justify-center font-bold text-[9px] tracking-tight">
             AN
           </div>
-          <span className="truncate max-w-[110px] font-medium text-slate-700">Abolfazl</span>
+          <span className="truncate max-w-[100px] text-[11px] font-medium text-slate-700">Abolfazl</span>
         </div>
 
         <button
           onClick={toggleLanguage}
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-colors shadow-xs"
+          className="flex items-center gap-1 px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors shadow-2xs text-[11px] font-semibold"
           title={t('language')}
         >
-          <Globe className="w-3.5 h-3.5" />
-          <span className="font-semibold text-[11px]">{locale === 'fa' ? 'FA' : 'EN'}</span>
+          <Globe className="w-3 h-3 text-slate-500" />
+          <span>{locale === 'fa' ? 'FA' : 'EN'}</span>
         </button>
       </div>
     </aside>
   )
 }
-

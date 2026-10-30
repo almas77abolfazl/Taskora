@@ -1,5 +1,5 @@
 import React from 'react'
-import { Check, Star, Calendar, Sun, CheckSquare } from 'lucide-react'
+import { Check, Star, Calendar, Sun, Folder } from 'lucide-react'
 import { Task } from '@core/domain/entities'
 import { useTasks } from '../../context/TaskContext'
 import { useI18n } from '../../i18n/context'
@@ -21,16 +21,18 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
 
   // Check if overdue
   const isOverdue =
-    task.dueDate && !task.completed && new Date(task.dueDate).getTime() < new Date().setHours(0, 0, 0, 0)
+    task.dueDate &&
+    !task.completed &&
+    new Date(task.dueDate).getTime() < new Date().setHours(0, 0, 0, 0)
 
   return (
     <div
       onClick={() => setSelectedTaskId(task.id)}
-      className={`group flex items-center justify-between p-3 rounded-xl border transition-all duration-150 cursor-pointer select-none bg-white ${
+      className={`group flex items-center justify-between px-3.5 py-2.5 rounded-lg border transition-all duration-150 cursor-pointer select-none ${
         isSelected
-          ? 'border-blue-500 ring-1 ring-blue-500 shadow-sm'
-          : 'border-slate-200/80 hover:border-slate-300 hover:shadow-xs'
-      }`}
+          ? 'bg-slate-100/80 border-slate-400/80 shadow-xs'
+          : 'bg-white border-slate-200/70 hover:border-slate-300 hover:bg-slate-50/50'
+      } ${task.completed ? 'opacity-70' : 'opacity-100'}`}
     >
       <div className="flex items-center gap-3 min-w-0 flex-1">
         {/* Completion Checkbox */}
@@ -40,50 +42,52 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
             e.stopPropagation()
             toggleTaskComplete(task.id)
           }}
-          className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 transition-all ${
+          className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center shrink-0 transition-all duration-150 ${
             task.completed
-              ? 'bg-blue-600 border-blue-600 text-white'
-              : 'border-slate-300 hover:border-blue-600 text-transparent hover:text-slate-400'
+              ? 'bg-slate-700 border-slate-700 text-white'
+              : 'border-slate-300 hover:border-slate-600 text-transparent hover:text-slate-400 bg-white'
           }`}
+          title={task.completed ? 'Mark incomplete' : 'Mark complete'}
         >
-          <Check className="w-3 h-3 stroke-[2.5]" />
+          <Check className="w-2.5 h-2.5 stroke-[3]" />
         </button>
 
         {/* Title and metadata */}
         <div className="flex flex-col min-w-0 flex-1">
           <span
-            className={`text-xs sm:text-sm font-medium truncate transition-all ${
-              task.completed ? 'line-through text-slate-400 font-normal' : 'text-slate-800'
+            className={`text-xs sm:text-[13px] tracking-tight truncate transition-all duration-150 ${
+              task.completed
+                ? 'line-through text-slate-400 font-normal'
+                : 'text-slate-900 font-medium'
             }`}
           >
             {task.title}
           </span>
 
           {/* Metadata badges */}
-          {(totalSubtasksCount > 0 || task.dueDate || task.isMyDay || list) && (
-            <div className="flex items-center gap-2.5 mt-1 text-[11px] text-slate-500 flex-wrap">
-              {/* List name badge */}
+          {(totalSubtasksCount > 0 || task.dueDate || task.isMyDay || (list && !list.isSystem)) && (
+            <div className="flex items-center gap-2.5 mt-0.5 text-[11px] text-slate-500 flex-wrap">
+              {/* Custom list badge */}
               {list && !list.isSystem && (
-                <span className="flex items-center gap-1 text-slate-600">
-                  <CheckSquare className="w-3 h-3" />
+                <span className="flex items-center gap-1 text-slate-600 font-normal">
+                  <Folder className="w-3 h-3 text-slate-400" />
                   <span>{list.title}</span>
                 </span>
               )}
 
-              {/* Subtasks pill */}
+              {/* Subtasks counter */}
               {totalSubtasksCount > 0 && (
                 <span className="flex items-center gap-1 text-slate-500">
-                  <Check className="w-3 h-3 text-slate-400" />
-                  <span>
-                    {completedSubtasksCount} of {totalSubtasksCount}
+                  <span className="font-mono text-[10px]">
+                    {completedSubtasksCount}/{totalSubtasksCount}
                   </span>
                 </span>
               )}
 
-              {/* My Day pill */}
+              {/* My Day indicator */}
               {task.isMyDay && (
-                <span className="flex items-center gap-1 text-blue-600 font-medium">
-                  <Sun className="w-3 h-3" />
+                <span className="flex items-center gap-1 text-blue-700 font-medium">
+                  <Sun className="w-3 h-3 text-blue-600" />
                   <span>My Day</span>
                 </span>
               )}
@@ -92,7 +96,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
               {task.dueDate && (
                 <span
                   className={`flex items-center gap-1 font-medium ${
-                    isOverdue ? 'text-red-500' : 'text-slate-600'
+                    isOverdue ? 'text-amber-700 font-semibold' : 'text-slate-600'
                   }`}
                 >
                   <Calendar className="w-3 h-3" />
@@ -104,27 +108,26 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
         </div>
       </div>
 
-      {/* Star button */}
+      {/* Important Star button */}
       <button
         type="button"
         onClick={(e) => {
           e.stopPropagation()
           toggleTaskImportant(task.id)
         }}
-        className={`p-1.5 rounded-lg transition-colors ms-2 ${
+        className={`p-1.5 rounded-md transition-colors ms-2 ${
           task.isImportant
-            ? 'text-red-500 hover:text-red-600'
+            ? 'text-amber-500 hover:text-amber-600'
             : 'text-slate-300 hover:text-slate-500 group-hover:text-slate-400'
         }`}
         title="Important"
       >
         <Star
-          className={`w-4 h-4 transition-transform ${
-            task.isImportant ? 'fill-red-500 scale-105' : 'stroke-[1.5]'
+          className={`w-4 h-4 transition-transform duration-150 ${
+            task.isImportant ? 'fill-amber-500 scale-105' : 'stroke-[1.5]'
           }`}
         />
       </button>
     </div>
   )
 }
-
