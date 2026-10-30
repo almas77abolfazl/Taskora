@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { App } from '@renderer/App'
 import { SYSTEM_LIST_IDS } from '@core/domain/entities'
 
@@ -78,7 +78,9 @@ describe('App Shell & Microsoft To Do UI Components', () => {
     render(<App />)
 
     // Check title bar branding
-    expect(screen.getByText('Microsoft To Do')).toBeDefined()
+    await waitFor(() => {
+      expect(screen.getByText('Microsoft To Do')).toBeDefined()
+    })
 
     // Check smart list presence in sidebar and view header
     expect(screen.getAllByText('روز من').length).toBeGreaterThanOrEqual(1)

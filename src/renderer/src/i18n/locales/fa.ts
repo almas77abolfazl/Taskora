@@ -32,8 +32,11 @@ export const fa: TranslationDictionary = {
   createdOn: 'ایجاد شده در',
   completedOn: 'انجام شده در',
   deleteTask: 'حذف کار',
+  deleteTaskConfirm: 'آیا از حذف این کار اطمینان دارید؟',
   deleteList: 'حذف لیست',
   deleteListConfirm: 'آیا از حذف این لیست اطمینان دارید؟ تمام کارهای داخل آن برای همیشه حذف خواهند شد.',
+  markComplete: 'علامت‌گذاری به عنوان انجام شده',
+  markIncomplete: 'علامت‌گذاری به عنوان انجام نشده',
 
   today: 'امروز',
   tomorrow: 'فردا',

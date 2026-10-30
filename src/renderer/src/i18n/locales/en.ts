@@ -32,8 +32,11 @@ export const en: TranslationDictionary = {
   createdOn: 'Created',
   completedOn: 'Completed',
   deleteTask: 'Delete task',
+  deleteTaskConfirm: 'Are you sure you want to delete this task?',
   deleteList: 'Delete list',
   deleteListConfirm: 'Are you sure you want to delete this list? All tasks inside it will be permanently deleted.',
+  markComplete: 'Mark complete',
+  markIncomplete: 'Mark incomplete',
 
   today: 'Today',
   tomorrow: 'Tomorrow',

@@ -11,7 +11,7 @@ interface TaskItemProps {
 export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
   const { toggleTaskComplete, toggleTaskImportant, selectedTaskId, setSelectedTaskId, lists } =
     useTasks()
-  const { formatRelativeDate } = useI18n()
+  const { t, formatRelativeDate } = useI18n()
 
   const isSelected = selectedTaskId === task.id
   const completedSubtasksCount = task.subtasks.filter((s) => s.completed).length
@@ -30,9 +30,9 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
       onClick={() => setSelectedTaskId(task.id)}
       className={`group flex items-center justify-between px-3.5 py-2.5 rounded-lg border transition-all duration-150 cursor-pointer select-none ${
         isSelected
-          ? 'bg-slate-100/80 border-slate-400/80 shadow-xs'
-          : 'bg-white border-slate-200/70 hover:border-slate-300 hover:bg-slate-50/50'
-      } ${task.completed ? 'opacity-70' : 'opacity-100'}`}
+          ? 'bg-blue-50/40 border-blue-400/80 shadow-xs ring-1 ring-blue-500/20'
+          : 'bg-white border-slate-200/80 hover:border-slate-300 hover:shadow-2xs'
+      } ${task.completed ? 'opacity-65 bg-slate-50/60' : 'opacity-100'}`}
     >
       <div className="flex items-center gap-3 min-w-0 flex-1">
         {/* Completion Checkbox */}
@@ -44,10 +44,10 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
           }}
           className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center shrink-0 transition-all duration-150 ${
             task.completed
-              ? 'bg-slate-700 border-slate-700 text-white'
+              ? 'bg-blue-600 border-blue-600 text-white shadow-2xs'
               : 'border-slate-300 hover:border-slate-600 text-transparent hover:text-slate-400 bg-white'
           }`}
-          title={task.completed ? 'Mark incomplete' : 'Mark complete'}
+          title={task.completed ? t('markIncomplete') : t('markComplete')}
         >
           <Check className="w-2.5 h-2.5 stroke-[3]" />
         </button>
@@ -88,7 +88,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
               {task.isMyDay && (
                 <span className="flex items-center gap-1 text-blue-700 font-medium">
                   <Sun className="w-3 h-3 text-blue-600" />
-                  <span>My Day</span>
+                  <span>{t('myDay')}</span>
                 </span>
               )}
 
@@ -120,7 +120,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
             ? 'text-amber-500 hover:text-amber-600'
             : 'text-slate-300 hover:text-slate-500 group-hover:text-slate-400'
         }`}
-        title="Important"
+        title={t('important')}
       >
         <Star
           className={`w-4 h-4 transition-transform duration-150 ${

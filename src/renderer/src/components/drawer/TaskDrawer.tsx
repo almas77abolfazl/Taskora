@@ -79,7 +79,7 @@ export const TaskDrawer: React.FC = () => {
   }
 
   const handleDeleteTask = async () => {
-    if (window.confirm('Are you sure you want to delete this task?')) {
+    if (window.confirm(t('deleteTaskConfirm'))) {
       await deleteTask(selectedTask.id)
     }
   }
@@ -96,10 +96,10 @@ export const TaskDrawer: React.FC = () => {
           onClick={() => toggleTaskComplete(selectedTask.id)}
           className={`w-4.5 h-4.5 mt-0.5 rounded-full border flex items-center justify-center shrink-0 transition-all duration-150 ${
             selectedTask.completed
-              ? 'bg-slate-700 border-slate-700 text-white'
+              ? 'bg-blue-600 border-blue-600 text-white shadow-2xs'
               : 'border-slate-300 hover:border-slate-600 text-transparent hover:text-slate-400 bg-white'
           }`}
-          title={selectedTask.completed ? 'Mark incomplete' : 'Mark complete'}
+          title={selectedTask.completed ? t('markIncomplete') : t('markComplete')}
         >
           <Check className="w-2.5 h-2.5 stroke-[3]" />
         </button>
@@ -160,7 +160,7 @@ export const TaskDrawer: React.FC = () => {
                   }
                   className={`w-3.5 h-3.5 rounded border flex items-center justify-center shrink-0 transition-colors ${
                     step.completed
-                      ? 'bg-slate-700 border-slate-700 text-white'
+                      ? 'bg-blue-600 border-blue-600 text-white shadow-2xs'
                       : 'border-slate-300 text-transparent hover:text-slate-400 bg-white'
                   }`}
                 >

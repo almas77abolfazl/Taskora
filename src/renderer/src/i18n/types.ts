@@ -35,8 +35,11 @@ export interface TranslationDictionary {
   createdOn: string
   completedOn: string
   deleteTask: string
+  deleteTaskConfirm: string
   deleteList: string
   deleteListConfirm: string
+  markComplete: string
+  markIncomplete: string
 
   // Dates
   today: string

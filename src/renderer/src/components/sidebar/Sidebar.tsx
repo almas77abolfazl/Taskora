@@ -108,7 +108,7 @@ export const Sidebar: React.FC = () => {
             </button>
           ) : (
             <span className="absolute end-2 text-[10px] text-slate-400 font-mono pointer-events-none border border-slate-200 rounded px-1">
-              ^F
+              Ctrl F
             </span>
           )}
         </div>
