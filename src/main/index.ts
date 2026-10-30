@@ -1,8 +1,23 @@
 import { app, shell, BrowserWindow } from 'electron'
 import { join } from 'path'
 import { is } from '@electron-toolkit/utils'
+import { LocalFileTaskRepository, LocalFileListRepository } from '@infrastructure/storage'
+import { registerIpcHandlers } from './ipc/register-handlers'
 
 let mainWindow: BrowserWindow | null = null
+let taskRepo: LocalFileTaskRepository | null = null
+let listRepo: LocalFileListRepository | null = null
+
+function initRepositories(): void {
+  const userDataPath = app.getPath('userData')
+  const tasksPath = join(userDataPath, 'tasks.json')
+  const listsPath = join(userDataPath, 'lists.json')
+
+  taskRepo = new LocalFileTaskRepository(tasksPath)
+  listRepo = new LocalFileListRepository(listsPath)
+
+  registerIpcHandlers(taskRepo, listRepo, () => mainWindow)
+}
 
 function createWindow(): void {
   mainWindow = new BrowserWindow({
@@ -41,6 +56,7 @@ function createWindow(): void {
 }
 
 app.whenReady().then(() => {
+  initRepositories()
   createWindow()
 
   app.on('activate', function () {

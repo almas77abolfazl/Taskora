@@ -23,8 +23,9 @@
     }
   },
   "include": [
+    "src/preload/index.d.ts",
     "src/renderer/src/**/*",
-    "src/core/domain/**/*"
+    "src/core/**/*"
   ]
 }
 

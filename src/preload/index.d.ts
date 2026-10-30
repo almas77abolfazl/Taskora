@@ -1,8 +1,7 @@
-import { ContextBridgeApi } from './index'
+import { IElectronAPI } from '@core/ipc/api.interface'
 
 declare global {
   interface Window {
-    api: ContextBridgeApi
+    api: IElectronAPI
   }
 }
-
