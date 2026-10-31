@@ -56,9 +56,9 @@ Standalone Windows binaries are available directly via GitHub Releases:
 
 | Package | Target | Description |
 | :--- | :--- | :--- |
-| [**Taskora Setup 1.0.0 (.exe)**](https://github.com/almas77abolfazl/taskora/releases/latest) | Windows x64 | Full installer with start menu and desktop shortcuts |
-| [**Taskora Portable 1.0.0 (.exe)**](https://github.com/almas77abolfazl/taskora/releases/latest) | Windows x64 | Standalone executable — runs anywhere without installation |
-| [**All Release Assets & Logs**](https://github.com/almas77abolfazl/taskora/releases) | Multi-arch | Source code, checksums, and changelog history |
+| [**Taskora Setup 1.0.0 (.exe)**](https://github.com/almas77abolfazl/taskora/releases/download/v1.0.0/Taskora-Setup-1.0.0.exe) | Windows x64 | Full installer with start menu and desktop shortcuts |
+| [**Taskora Portable 1.0.0 (.exe)**](https://github.com/almas77abolfazl/taskora/releases/download/v1.0.0/Taskora-1.0.0.exe) | Windows x64 | Standalone executable — runs anywhere without installation |
+| [**All Release Assets & Logs**](https://github.com/almas77abolfazl/taskora/releases/tag/v1.0.0) | Multi-arch | Source code, checksums, and changelog history |
 
 ---
 
