@@ -1,6 +1,6 @@
-# Architecture Overview
+# Taskora — Architecture Overview
 
-This project is a modern, offline-first task management desktop application inspired by **Microsoft To Do**, designed around **Clean Architecture**, strict **Context Isolation**, and **Test-Driven Development (TDD)**.
+Taskora is a modern, offline-first task management desktop application inspired by **Microsoft To Do**, designed around **Clean Architecture**, strict **Context Isolation**, and **Test-Driven Development (TDD)**.
 
 ---
 
@@ -16,6 +16,7 @@ This project is a modern, offline-first task management desktop application insp
 |    - Sidebar (Smart Lists, Custom Lists, Language Toggle)                |
 |    - TaskView (QuickAddInput, TaskItem, Completed Sections)              |
 |    - TaskDrawer (Step Management, Due Date, Notes, Timestamps)           |
+|    - ProfileModal (Offline User Profile & Cloud Teaser)                  |
 |                                                                          |
 |  [ State & Localization Layer ]                                          |
 |    - TaskContext (Task/List reactive state)                              |

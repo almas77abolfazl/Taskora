@@ -20,6 +20,11 @@ function initRepositories(): void {
 }
 
 function createWindow(): void {
+  const iconPath =
+    process.platform === 'win32'
+      ? join(__dirname, '../../resources/icon.ico')
+      : join(__dirname, '../../resources/icon.png')
+
   mainWindow = new BrowserWindow({
     width: 1000,
     height: 720,
@@ -30,6 +35,7 @@ function createWindow(): void {
     frame: false,
     titleBarStyle: 'hidden',
     backgroundColor: '#f8fafc',
+    icon: iconPath,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false,

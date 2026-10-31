@@ -1,6 +1,7 @@
 {
-  "name": "todo-list-with-electronjs",
+  "name": "taskora",
   "version": "2.0.0",
+  "productName": "Taskora",
   "packageManager": "pnpm@11.21.0",
   "description": "A modern, bilingual, offline-first task management desktop application built with Electron, React 19, TypeScript, and Clean Architecture.",
   "main": "./out/main/index.js",
@@ -8,12 +9,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/almas77abolfazl/todo-list-with-electronJS.git"
+    "url": "git+https://github.com/almas77abolfazl/taskora.git"
   },
   "bugs": {
-    "url": "https://github.com/almas77abolfazl/todo-list-with-electronJS/issues"
+    "url": "https://github.com/almas77abolfazl/taskora/issues"
   },
-  "homepage": "https://github.com/almas77abolfazl/todo-list-with-electronJS#readme",
+  "homepage": "https://github.com/almas77abolfazl/taskora#readme",
   "scripts": {
     "dev": "electron-vite dev",
     "build": "electron-vite build",
@@ -22,6 +23,38 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "build:win": "npm run build && electron-builder --win"
+  },
+  "build": {
+    "appId": "com.taskora.app",
+    "productName": "Taskora",
+    "directories": {
+      "buildResources": "resources",
+      "output": "dist"
+    },
+    "win": {
+      "icon": "resources/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Taskora"
+    }
   },
   "dependencies": {
     "clsx": "^2.1.1",
