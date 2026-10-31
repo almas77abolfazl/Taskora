@@ -1,112 +1,137 @@
-<p align="center">
-  <img src="docs/assets/logo.png" width="96" height="96" alt="Taskora Logo" style="border-radius: 20px;" />
-</p>
+<div align="center">
 
-<h1 align="center">Taskora</h1>
+  <img src="docs/assets/logo.png" width="108" height="108" alt="Taskora Logo" style="border-radius: 24px; box-shadow: 0 8px 24px rgba(79, 70, 229, 0.25);" />
 
-<p align="center">
-  <strong>A modern, bilingual, offline-first task management desktop application.</strong><br>
-  Built with <strong>Electron</strong>, <strong>React 19</strong>, <strong>TypeScript</strong>, and <strong>Clean Architecture</strong>.
-</p>
+  # Taskora
 
-<p align="center">
-  <a href="https://github.com/almas77abolfazl/taskora/actions/workflows/ci.yml">
-    <img src="https://github.com/almas77abolfazl/taskora/actions/workflows/ci.yml/badge.svg" alt="CI Workflow" />
-  </a>
-  <a href="https://github.com/almas77abolfazl/taskora/releases">
-    <img src="https://img.shields.io/github/v/release/almas77abolfazl/taskora?label=Release&color=indigo" alt="Latest Release" />
-  </a>
-  <img src="https://img.shields.io/badge/Electron-33.4-47848F?logo=electron&logoColor=white" alt="Electron" />
-  <img src="https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black" alt="React 19" />
-  <img src="https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS v4" />
-  <img src="https://img.shields.io/badge/Tested_with-Vitest-FCC72B?logo=vitest&logoColor=black" alt="Vitest" />
-  <a href="LICENSE">
-    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" />
-  </a>
-</p>
+  **The minimal, offline-first task companion engineered for deep focus.**  
+  *A distraction-free productivity experience built with Clean Architecture, Electron, React 19, and TypeScript.*
+
+  <br />
+
+  [![Release](https://img.shields.io/badge/Release-v1.0.0-6366f1?style=for-the-badge&logo=github&logoColor=white)](https://github.com/almas77abolfazl/taskora/releases/latest)
+  [![Download Windows](https://img.shields.io/badge/Download_for_Windows-Installer_%26_Portable-0284c7?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/almas77abolfazl/taskora/releases/latest)
+  [![License](https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge)](LICENSE)
+
+  <br />
+
+  [![CI Workflow](https://img.shields.io/github/actions/workflow/status/almas77abolfazl/taskora/ci.yml?branch=main&label=CI%20Pipeline&logo=githubactions&logoColor=white)](https://github.com/almas77abolfazl/taskora/actions)
+  [![Electron](https://img.shields.io/badge/Electron-33.4-47848F?logo=electron&logoColor=white)](https://www.electronjs.org/)
+  [![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+  [![Vitest](https://img.shields.io/badge/Vitest-Passing-FCC72B?logo=vitest&logoColor=black)](https://vitest.dev/)
+  [![Offline First](https://img.shields.io/badge/Data_Storage-100%25_Offline-10b981)](docs/adr/003-offline-first-atomic-file-storage.md)
+
+</div>
+
+<br />
 
 ---
 
-## ⚡ Direct Download
+## 🖥️ Application Showcase
 
-Get the latest pre-built Windows release directly from GitHub:
+<div align="center">
+  <img src="docs/assets/app-preview.png" alt="Taskora Desktop Preview" width="100%" style="border-radius: 14px; border: 1px solid rgba(226, 232, 240, 0.8); box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12);" />
+  <p align="center"><em>Taskora running natively on desktop — Minimalist UI, Smart Lists, Jalali / Gregorian support, and zero clutter.</em></p>
+</div>
 
-| Platform | Download Link | Type |
+---
+
+## ⚡ Direct Downloads
+
+Get the standalone Windows binaries directly from GitHub Releases:
+
+| Release Package | Target | Description |
 | :--- | :--- | :--- |
-| **Windows x64** | [**Download Taskora Installer (.exe)**](https://github.com/almas77abolfazl/taskora/releases/latest) | Full Setup Installer |
-| **Windows x64** | [**Download Taskora Portable (.exe)**](https://github.com/almas77abolfazl/taskora/releases/latest) | Standalone (No Install Required) |
-| **All Platforms** | [**Browse All Releases**](https://github.com/almas77abolfazl/taskora/releases) | Release Assets & Changelogs |
+| [**📥 Taskora Setup 1.0.0 (.exe)**](https://github.com/almas77abolfazl/taskora/releases/latest) | Windows x64 | Full installer with start menu & desktop shortcuts |
+| [**📦 Taskora Portable 1.0.0 (.exe)**](https://github.com/almas77abolfazl/taskora/releases/latest) | Windows x64 | Single standalone executable — runs anywhere without installation |
+| [**🔗 All Release Assets & Logs**](https://github.com/almas77abolfazl/taskora/releases) | Multi-arch | Source code, checksums, and changelog history |
 
 ---
 
-## 🖥️ Application Preview
+## 🌟 Why Taskora? (Bento Grid)
 
-<p align="center">
-  <img src="docs/assets/app-preview.png" alt="Taskora Desktop Interface Preview" width="100%" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);" />
-</p>
-
----
-
-## ✨ Key Features
-
-- **100% Offline & Local Data Ownership:** Zero remote cloud accounts required, zero trackers, and zero external telemetry. All your data resides locally on your computer using crash-resilient atomic file writes (`AtomicFileStorage`).
-- **Clean, Minimalist Aesthetics:** No AI buzzwords, no visual clutter, and **strictly zero emojis** across the interface and documentation. All icons are crisp, vector **Lucide SVG** elements.
-- **Bilingual (English & Persian) with Dynamic RTL/LTR:** Instant real-time language toggling with full document layout mirroring (`dir="rtl"` / `dir="ltr"`) and Persian typography (`IRANYekanRegular`).
-- **Solar Hijri (Jalali) & Gregorian Dual-Calendar:** Native calendar formatting (`۱۴۰۵ آبان` / `October 2026`) and relative human dates (`Today`, `Tomorrow`, `امروز`, `فردا`).
-- **Smart Focus Lists:**
-  - 🌅 **My Day:** Refreshing daily focus view to plan tasks for today.
-  - ⭐ **Important:** Star high-priority tasks with visual accent indicators.
-  - 📅 **Planned:** Auto-organized scheduled tasks with overdue alerts.
-  - 📋 **Tasks & Custom Lists:** Organize projects with custom categorized lists.
-- **Task Inspector Drawer:** Deep inspection panel supporting subtask checklists, quick due-date presets, and auto-saving rich notes.
-- **Synthesized Audio Completion Chime:** Delightful Web Audio harmonic chime on task completion (100% synthesized in-memory, zero audio file bloat).
-- **Strict Context Isolation (Zero RCE Risk):** Built in strict adherence to Electron security standards (`contextIsolation: true`, `nodeIntegration: false`) with type-safe IPC contracts over `contextBridge`.
-
----
-
-## 📖 Quick Tutorial & Workflow
-
-### 1. Daily Planning with "My Day"
-Open Taskora each morning to review your tasks. Add tasks to **My Day** by clicking the sun icon in the task inspector. At midnight, My Day resets so you start each morning with a clean slate.
-
-### 2. Quick Task Creation
-Press `Ctrl + N` anywhere in the app to immediately focus the input bar. Type your task title and hit `Enter` to save.
-
-### 3. Subtasks & Detailed Notes
-Click on any task to slide out the **Task Inspector Drawer**. Here you can:
-- Break complex goals down into actionable step checklists.
-- Set due dates using quick presets (`Today`, `Tomorrow`, `Next Week`).
-- Write detailed notes in the auto-saving textarea.
-
-### 4. Language & Theme Switching
-Switch between **English (LTR)** and **فارسی (RTL)** with one click using the language toggle in the bottom of the sidebar. The entire application instantly updates fonts, date calendars (Gregorian / Jalali), and reading direction.
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>🔒 100% Offline & Local Data Ownership</h3>
+      <p>No account creation, no sign-in modals, no tracking, and zero remote servers. All your tasks, subtasks, notes, and custom categories reside strictly on your local disk using a crash-safe <strong>Atomic Sequential Storage Engine</strong> (<code>AtomicFileStorage</code>).</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🇮🇷 🇬🇧 First-Class Bilingual & Jalali Engine</h3>
+      <p>Instant one-click toggle between <strong>English (LTR)</strong> and <strong>فارسی (RTL)</strong>. Includes high-fidelity Persian typography (<code>IRANYekanRegular</code> / <code>Vazirmatn</code>) and full dual calendar support for <strong>Solar Hijri (Jalali)</strong> and Gregorian dates.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>✨ Zero AI Vibe & Clean Aesthetics</h3>
+      <p>No robotic buzzwords, no generic AI gradients, and <strong>strictly zero emojis</strong> across the entire user interface and documentation. Built with crisp, vector <strong>Lucide SVG icons</strong> and tailored modern color palettes.</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🛡️ Strict Context Isolation (Zero RCE Risk)</h3>
+      <p>Engineered according to the highest Electron security specifications: <code>contextIsolation: true</code>, <code>nodeIntegration: false</code>. The renderer communicates exclusively via strongly-typed, sanitized IPC contracts over <code>contextBridge</code>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>⚡ Keyboard-First Productivity</h3>
+      <p>Designed for velocity. Quick-add tasks with <code>Ctrl + N</code>, jump to global search with <code>Ctrl + F</code>, organize subtask checklists on the fly, and dismiss modals with <code>Esc</code> without your hands leaving the keyboard.</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🎵 Synthesized Harmonic Chimes</h3>
+      <p>Enjoy a subtle, delightful completion chime whenever you check off a task. Generated 100% in-memory using harmonic Web Audio API oscillators — zero external MP3/WAV assets or network overhead.</p>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## ⌨️ Keyboard Shortcuts
+## 🧭 Visual Feature Tour
 
-| Shortcut | Description |
-| :--- | :--- |
-| `Ctrl + F` / `Cmd + F` | Focus global search bar across titles and notes |
-| `Ctrl + N` / `Cmd + N` | Focus quick task add input bar |
-| `Enter` | Submit new task or subtask step |
-| `Escape` | Close task inspector drawer / Clear active search |
+### 1. 🌅 Smart Focus Lists
+- **My Day (روز من):** Your daily focus view. Start every day with a fresh, intentional list of priorities.
+- **Important (مهم):** Highlight critical deliverables with subtle jewel-toned star indicators.
+- **Planned (برنامه‌ریزی‌شده):** Automated chronological timeline with overdue alerts and date badges.
+- **Tasks & Custom Lists:** Organize initiatives with custom colored pips and individual categories.
+
+### 2. 📝 Deep Task Inspector Drawer
+Slide open any task to reveal detailed management controls:
+- **Subtasks (Steps):** Break complex items into granular, actionable checklists.
+- **Due Date Presets:** One-click shortcuts for *Today*, *Tomorrow*, or *Next Week*.
+- **Auto-Saving Notes:** Distraction-free scratchpad for task context, thoughts, and technical details.
+
+### 3. 👤 Local Profile & Privacy Management
+Click the profile pill in the bottom-left sidebar to open your user card:
+- Customize your personal display name.
+- View task velocity metrics (Total, Completed, Pending).
+- Check local storage disk status and future cloud sync teasers.
 
 ---
 
-## 🏛️ Architecture & Code Quality
+## ⌨️ Keyboard Shortcuts Reference
 
-Taskora is engineered using **Hexagonal Clean Architecture** and **Domain-Driven Design (DDD)** principles:
+| Shortcut | Action | Description |
+| :---: | :--- | :--- |
+| <kbd>Ctrl</kbd> + <kbd>N</kbd> | **Quick Add** | Immediately focuses the task creation input bar |
+| <kbd>Ctrl</kbd> + <kbd>F</kbd> | **Global Search** | Searches across task titles, lists, and note contents |
+| <kbd>Enter</kbd> | **Submit** | Commits a new task title, subtask step, or list name |
+| <kbd>Esc</kbd> | **Dismiss** | Closes the task inspector drawer or resets active search query |
+
+---
+
+## 🏛️ Clean Architecture & Engineering Standards
+
+Taskora is structured around **Hexagonal Clean Architecture** and **Domain-Driven Design (DDD)**:
 
 ```
 src/
-├── core/                        # Pure domain entities, ports & IPC contracts
+├── core/                        # Domain Layer (Pure TypeScript, Zero External Dependencies)
 │   ├── domain/entities/         # Task, SubTask, TaskList domain models
 │   ├── ports/                   # ITaskRepository, IListRepository interfaces
-│   └── ipc/                     # Strongly-typed IPC channel contracts (IElectronAPI)
+│   └── ipc/                     # Type-safe IPC channels & IElectronAPI contracts
 │
-├── infrastructure/              # File persistence & storage adapters
+├── infrastructure/              # Adapter Layer (File I/O & Persistence)
 │   └── storage/
 │       ├── atomic-file-storage.ts      # Thread-safe sequential write queue
 │       ├── local-file-task-repository.ts
@@ -114,70 +139,62 @@ src/
 │       └── in-memory-task-repository.ts
 │
 ├── main/                        # Electron Main Process
-│   ├── index.ts                 # Window management, frameless setup & lifecycle
-│   └── ipc/register-handlers.ts # IPC dispatchers invoking core repositories
+│   ├── index.ts                 # Frameless window manager, app lifecycle & tray
+│   └── ipc/register-handlers.ts # IPC dispatchers invoking core repository ports
 │
-├── preload/                     # Secure Context Bridge
+├── preload/                     # Security Layer
 │   ├── index.ts                 # Sanitized contextBridge exposure
 │   └── index.d.ts               # Global Window.api TypeScript augmentation
 │
-└── renderer/                    # React 19 Frontend (Vite)
+└── renderer/                    # Presentation Layer (React 19 + Tailwind v4)
     ├── src/
     │   ├── components/          # TitleBar, Sidebar, TaskView, TaskDrawer, ProfileModal
-    │   ├── context/             # TaskContext & reactive state
+    │   ├── context/             # TaskContext & reactive state management
     │   ├── i18n/                # Localization engine & Jalali date formatters
     │   ├── lib/                 # Web Audio sound engine & date utilities
-    │   └── styles/              # Tailwind CSS v4 design system
+    │   └── styles/              # Global styles, fonts & Tailwind CSS v4
     └── index.html
 ```
 
-Detailed technical specifications and architecture diagrams are documented in [docs/architecture.md](docs/architecture.md).
-
 ### Architecture Decision Records (ADRs)
-- [ADR 001: Modern Stack (Vite + Electron + React 19)](docs/adr/001-modern-stack-vite-electron.md)
-- [ADR 002: Strict Context Isolation & Type-Safe IPC Bridge](docs/adr/002-strict-context-isolation-and-ipc-bridge.md)
-- [ADR 003: Offline-First Atomic File Storage](docs/adr/003-offline-first-atomic-file-storage.md)
-- [ADR 004: Bilingual Localization (RTL/LTR) & Solar Hijri (Jalali) Engine](docs/adr/004-bilingual-rtl-ltr-and-jalali-engine.md)
+- 📄 [ADR 001: Modern Stack (Vite + Electron + React 19)](docs/adr/001-modern-stack-vite-electron.md)
+- 📄 [ADR 002: Strict Context Isolation & Type-Safe IPC Bridge](docs/adr/002-strict-context-isolation-and-ipc-bridge.md)
+- 📄 [ADR 003: Offline-First Atomic File Storage](docs/adr/003-offline-first-atomic-file-storage.md)
+- 📄 [ADR 004: Bilingual Localization (RTL/LTR) & Solar Hijri (Jalali) Engine](docs/adr/004-bilingual-rtl-ltr-and-jalali-engine.md)
 
 ---
 
-## 🛠️ Development & Building
+## 🚀 Getting Started (Development)
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) (v22.x or later recommended)
 - [pnpm](https://pnpm.io/) (v10 or later)
 
-### Setup
+### Setup & Local Development
 ```bash
 # Clone the repository
 git clone https://github.com/almas77abolfazl/taskora.git
 cd taskora
 
-# Install dependencies
+# Install dependencies using pnpm
 pnpm install
-```
 
-### Running in Development
-```bash
-# Launch Electron application with Vite Hot Module Replacement (HMR)
+# Run the Electron application with Vite Hot Module Replacement (HMR)
 pnpm dev
 ```
 
-### Running Tests
+### Automated Testing & Quality Checks
 ```bash
-# Run unit & integration test suites
+# Run unit & component test suites with Vitest (22/22 tests)
 pnpm test
 
 # Run tests in watch mode
 pnpm test:watch
-```
 
-### Type Checking & Packaging
-```bash
-# Verify strict TypeScript compiler contracts across Main, Preload & Renderer
+# Execute strict TypeScript compiler validation across Main, Preload & Renderer
 pnpm run typecheck
 
-# Build optimized production bundles
+# Build production bundles
 pnpm run build
 
 # Package standalone Windows installer (.exe) & portable binary
@@ -186,8 +203,8 @@ pnpm run build:win
 
 ---
 
-## 📄 License
+## 📜 License
 
 This project is open-source software licensed under the [MIT License](LICENSE).
 
-Developed with precision by **[Abolfazl Nasiri Almas](https://github.com/almas77abolfazl)**.
+Crafted with dedication by **[Abolfazl Nasiri Almas](https://github.com/almas77abolfazl)**.
