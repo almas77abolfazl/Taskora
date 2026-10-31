@@ -1,6 +1,8 @@
 import { TranslationDictionary } from '../types'
 
 export const en: TranslationDictionary = {
+  appName: 'Taskora',
+
   myDay: 'My Day',
   important: 'Important',
   planned: 'Planned',
@@ -51,6 +53,18 @@ export const en: TranslationDictionary = {
   emptyTasksTitle: 'All tasks completed',
   emptyTasksSubtitle: 'Enjoy your free time or add a new task to get started.',
   emptySearchTitle: 'No tasks match your search.',
-  completedTasks: 'Completed'
-}
+  completedTasks: 'Completed',
 
+  profile: 'Profile & Settings',
+  profileName: 'Display Name',
+  profileNamePlaceholder: 'Enter your name',
+  offlineStorage: 'Local Offline Storage',
+  offlineStorageDesc: 'All data is stored directly on your computer disk.',
+  cloudSync: 'Cloud Account Sync',
+  cloudSyncDesc: 'Connect account to sync across devices in future releases.',
+  comingSoon: 'Coming Soon',
+  activeStatus: 'Active',
+  totalTasks: 'Total Tasks',
+  completedCount: 'Completed',
+  pendingCount: 'Pending'
+}

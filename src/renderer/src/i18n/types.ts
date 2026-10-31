@@ -1,6 +1,9 @@
 export type Locale = 'en' | 'fa'
 
 export interface TranslationDictionary {
+  // Brand & App
+  appName: string
+
   // Navigation & Lists
   myDay: string
   important: string
@@ -57,5 +60,18 @@ export interface TranslationDictionary {
   emptyTasksSubtitle: string
   emptySearchTitle: string
   completedTasks: string
-}
 
+  // Profile & Account
+  profile: string
+  profileName: string
+  profileNamePlaceholder: string
+  offlineStorage: string
+  offlineStorageDesc: string
+  cloudSync: string
+  cloudSyncDesc: string
+  comingSoon: string
+  activeStatus: string
+  totalTasks: string
+  completedCount: string
+  pendingCount: string
+}

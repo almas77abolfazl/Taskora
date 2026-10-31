@@ -1,6 +1,7 @@
 import React from 'react'
-import { Minus, Square, X, CheckSquare } from 'lucide-react'
+import { Minus, Square, X } from 'lucide-react'
 import { useI18n } from '../../i18n/context'
+import { BrandLogo } from '../common/BrandLogo'
 
 export const TitleBar: React.FC = () => {
   const { direction } = useI18n()
@@ -18,34 +19,34 @@ export const TitleBar: React.FC = () => {
   }
 
   return (
-    <header className="h-9 select-none bg-slate-900 text-slate-300 flex items-center justify-between px-3 text-xs border-b border-slate-800 shrink-0 [app-region:drag]">
-      {/* App branding */}
+    <header className="h-9 select-none bg-slate-950 text-slate-300 flex items-center justify-between px-3 text-xs border-b border-slate-800/80 shrink-0 [app-region:drag]">
+      {/* Brand & App Name */}
       <div className="flex items-center gap-2 [app-region:no-drag]">
-        <CheckSquare className="w-4 h-4 text-blue-400" />
-        <span className="font-semibold text-slate-100 tracking-wide">Microsoft To Do</span>
+        <BrandLogo className="w-4 h-4 shadow-sm" size={17} />
+        <span className="font-semibold text-slate-100 tracking-wide text-xs">Taskora</span>
       </div>
 
       {/* Window Controls */}
       <div
-        className={`flex items-center gap-1 [app-region:no-drag] ${direction === 'rtl' ? 'flex-row-reverse' : ''}`}
+        className={`flex items-center gap-0.5 [app-region:no-drag] ${direction === 'rtl' ? 'flex-row-reverse' : ''}`}
       >
         <button
           onClick={handleMinimize}
-          className="w-7 h-6 flex items-center justify-center rounded hover:bg-slate-800 text-slate-400 hover:text-slate-100 transition-colors"
+          className="w-8 h-7 flex items-center justify-center rounded hover:bg-slate-800/90 text-slate-400 hover:text-slate-100 transition-colors"
           title="Minimize"
         >
           <Minus className="w-3.5 h-3.5" />
         </button>
         <button
           onClick={handleMaximize}
-          className="w-7 h-6 flex items-center justify-center rounded hover:bg-slate-800 text-slate-400 hover:text-slate-100 transition-colors"
+          className="w-8 h-7 flex items-center justify-center rounded hover:bg-slate-800/90 text-slate-400 hover:text-slate-100 transition-colors"
           title="Maximize"
         >
           <Square className="w-3 h-3" />
         </button>
         <button
           onClick={handleClose}
-          className="w-7 h-6 flex items-center justify-center rounded hover:bg-red-600 text-slate-400 hover:text-white transition-colors"
+          className="w-8 h-7 flex items-center justify-center rounded hover:bg-rose-600 text-slate-400 hover:text-white transition-colors"
           title="Close"
         >
           <X className="w-3.5 h-3.5" />
@@ -54,4 +55,3 @@ export const TitleBar: React.FC = () => {
     </header>
   )
 }
-

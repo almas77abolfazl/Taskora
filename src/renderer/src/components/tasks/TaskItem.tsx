@@ -28,11 +28,13 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
   return (
     <div
       onClick={() => setSelectedTaskId(task.id)}
-      className={`group flex items-center justify-between px-3.5 py-2.5 rounded-lg border transition-all duration-150 cursor-pointer select-none ${
+      className={`group flex items-center justify-between px-3.5 py-2.5 rounded-xl border transition-all duration-150 cursor-pointer select-none ${
         isSelected
-          ? 'bg-blue-50/40 border-blue-400/80 shadow-xs ring-1 ring-blue-500/20'
+          ? 'bg-indigo-50/40 border-indigo-400/80 shadow-xs ring-1 ring-indigo-500/20'
           : 'bg-white border-slate-200/80 hover:border-slate-300 hover:shadow-2xs'
-      } ${task.completed ? 'opacity-65 bg-slate-50/60' : 'opacity-100'}`}
+      } ${task.completed ? 'opacity-65 bg-slate-50/60' : 'opacity-100'} ${
+        task.isImportant && !task.completed ? 'border-s-[3px] border-s-rose-400' : ''
+      }`}
     >
       <div className="flex items-center gap-3 min-w-0 flex-1">
         {/* Completion Checkbox */}
@@ -42,10 +44,10 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
             e.stopPropagation()
             toggleTaskComplete(task.id)
           }}
-          className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center shrink-0 transition-all duration-150 ${
+          className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center shrink-0 transition-all duration-150 cursor-pointer ${
             task.completed
-              ? 'bg-blue-600 border-blue-600 text-white shadow-2xs'
-              : 'border-slate-300 hover:border-slate-600 text-transparent hover:text-slate-400 bg-white'
+              ? 'bg-indigo-600 border-indigo-600 text-white shadow-2xs'
+              : 'border-slate-300 hover:border-indigo-600 text-transparent hover:text-indigo-400 bg-white'
           }`}
           title={task.completed ? t('markIncomplete') : t('markComplete')}
         >
@@ -66,7 +68,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
 
           {/* Metadata badges */}
           {(totalSubtasksCount > 0 || task.dueDate || task.isMyDay || (list && !list.isSystem)) && (
-            <div className="flex items-center gap-2.5 mt-0.5 text-[11px] text-slate-500 flex-wrap">
+            <div className="flex items-center gap-2 mt-0.5 text-[11px] text-slate-500 flex-wrap">
               {/* Custom list badge */}
               {list && !list.isSystem && (
                 <span className="flex items-center gap-1 text-slate-600 font-normal">
@@ -78,7 +80,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
               {/* Subtasks counter */}
               {totalSubtasksCount > 0 && (
                 <span className="flex items-center gap-1 text-slate-500">
-                  <span className="font-mono text-[10px]">
+                  <span className="font-mono text-[10px] bg-slate-100 px-1.5 py-0.2 rounded-full">
                     {completedSubtasksCount}/{totalSubtasksCount}
                   </span>
                 </span>
@@ -86,8 +88,8 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
 
               {/* My Day indicator */}
               {task.isMyDay && (
-                <span className="flex items-center gap-1 text-blue-700 font-medium">
-                  <Sun className="w-3 h-3 text-blue-600" />
+                <span className="flex items-center gap-1 text-amber-700 font-medium bg-amber-50 px-1.5 py-0.2 rounded-full text-[10px]">
+                  <Sun className="w-3 h-3 text-amber-500" />
                   <span>{t('myDay')}</span>
                 </span>
               )}
@@ -95,8 +97,10 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
               {/* Due Date pill */}
               {task.dueDate && (
                 <span
-                  className={`flex items-center gap-1 font-medium ${
-                    isOverdue ? 'text-amber-700 font-semibold' : 'text-slate-600'
+                  className={`flex items-center gap-1 font-medium px-1.5 py-0.2 rounded-full text-[10px] ${
+                    isOverdue
+                      ? 'text-rose-700 bg-rose-50 font-semibold'
+                      : 'text-slate-600 bg-slate-100'
                   }`}
                 >
                   <Calendar className="w-3 h-3" />
@@ -115,16 +119,16 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
           e.stopPropagation()
           toggleTaskImportant(task.id)
         }}
-        className={`p-1.5 rounded-md transition-colors ms-2 ${
+        className={`p-1.5 rounded-md transition-colors ms-2 cursor-pointer ${
           task.isImportant
-            ? 'text-amber-500 hover:text-amber-600'
+            ? 'text-rose-500 hover:text-rose-600'
             : 'text-slate-300 hover:text-slate-500 group-hover:text-slate-400'
         }`}
         title={t('important')}
       >
         <Star
           className={`w-4 h-4 transition-transform duration-150 ${
-            task.isImportant ? 'fill-amber-500 scale-105' : 'stroke-[1.5]'
+            task.isImportant ? 'fill-rose-500 text-rose-500 scale-105' : 'stroke-[1.5]'
           }`}
         />
       </button>

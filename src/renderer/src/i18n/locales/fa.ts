@@ -1,6 +1,8 @@
 import { TranslationDictionary } from '../types'
 
 export const fa: TranslationDictionary = {
+  appName: 'تسکورا',
+
   myDay: 'روز من',
   important: 'مهم',
   planned: 'برنامه‌ریزی‌شده',
@@ -51,6 +53,18 @@ export const fa: TranslationDictionary = {
   emptyTasksTitle: 'تمام کارها انجام شدند',
   emptyTasksSubtitle: 'از زمان خود لذت ببرید یا کار جدیدی اضافه کنید.',
   emptySearchTitle: 'موردی مطابق با جستجوی شما پیدا نشد.',
-  completedTasks: 'انجام شده'
-}
+  completedTasks: 'انجام شده',
 
+  profile: 'پروفایل و تنظیمات',
+  profileName: 'نام نمایشی',
+  profileNamePlaceholder: 'نام خود را وارد کنید',
+  offlineStorage: 'ذخیره‌سازی آفلاین محلی',
+  offlineStorageDesc: 'تمام داده‌های شما با امنیت روی هارد دیسک شما نگهداری می‌شوند.',
+  cloudSync: 'اتصال به حساب و همگام‌سازی ابری',
+  cloudSyncDesc: 'امکان اتصال به حساب و همگام‌سازی در آپدیت‌های بعدی فعال می‌شود.',
+  comingSoon: 'به زودی',
+  activeStatus: 'فعال',
+  totalTasks: 'کل کارها',
+  completedCount: 'انجام شده',
+  pendingCount: 'در انتظار'
+}

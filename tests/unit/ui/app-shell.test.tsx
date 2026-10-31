@@ -4,7 +4,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import { App } from '@renderer/App'
 import { SYSTEM_LIST_IDS } from '@core/domain/entities'
 
-describe('App Shell & Microsoft To Do UI Components', () => {
+describe('App Shell & Taskora UI Components', () => {
   beforeEach(() => {
     // Mock window.api
     window.api = {
@@ -79,7 +79,7 @@ describe('App Shell & Microsoft To Do UI Components', () => {
 
     // Check title bar branding
     await waitFor(() => {
-      expect(screen.getByText('Microsoft To Do')).toBeDefined()
+      expect(screen.getByText('Taskora')).toBeDefined()
     })
 
     // Check smart list presence in sidebar and view header

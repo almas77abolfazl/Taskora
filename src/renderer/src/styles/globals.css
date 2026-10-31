@@ -17,6 +17,15 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   }
 
+  button,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  input[type="checkbox"],
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
   /* Custom minimal scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
@@ -37,7 +46,7 @@
   }
 
   ::selection {
-    background: rgba(59, 130, 246, 0.18);
+    background: rgba(99, 102, 241, 0.2);
     color: inherit;
   }
 }
