@@ -9,12 +9,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/almas77abolfazl/taskora.git"
+    "url": "git+https://github.com/almas77abolfazl/Taskora.git"
   },
   "bugs": {
-    "url": "https://github.com/almas77abolfazl/taskora/issues"
+    "url": "https://github.com/almas77abolfazl/Taskora/issues"
   },
-  "homepage": "https://github.com/almas77abolfazl/taskora#readme",
+  "homepage": "https://github.com/almas77abolfazl/Taskora#readme",
   "scripts": {
     "dev": "electron-vite dev",
     "build": "electron-vite build",
