@@ -129,9 +129,12 @@ export const Sidebar: React.FC = () => {
     'bg-violet-500'
   ]
 
-  const handleCreateList = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!newListName.trim()) return
+  const handleCreateList = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault()
+    if (!newListName.trim()) {
+      setIsCreatingList(false)
+      return
+    }
     await createList(newListName.trim())
     setNewListName('')
     setIsCreatingList(false)
@@ -274,8 +277,12 @@ export const Sidebar: React.FC = () => {
               autoFocus
               value={newListName}
               onChange={(e) => setNewListName(e.target.value)}
+              onBlur={() => handleCreateList()}
               onKeyDown={(e) => {
-                if (e.key === 'Escape') setIsCreatingList(false)
+                if (e.key === 'Escape') {
+                  setNewListName('')
+                  setIsCreatingList(false)
+                }
               }}
               placeholder={t('newListPlaceholder')}
               className="w-full text-xs px-3 py-1.5 bg-white rounded-lg border border-indigo-400 text-slate-800 placeholder-slate-400 focus:outline-none ring-1 ring-indigo-400 shadow-2xs"

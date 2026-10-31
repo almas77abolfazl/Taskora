@@ -52,8 +52,8 @@ export const TaskDrawer: React.FC = () => {
     }
   }
 
-  const handleAddStep = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleAddStep = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault()
     if (!newStepTitle.trim()) return
     await addSubTask(selectedTask.id, newStepTitle.trim())
     setNewStepTitle('')
@@ -176,10 +176,12 @@ export const TaskDrawer: React.FC = () => {
               </div>
 
               <button
+                type="button"
                 onClick={() => deleteSubTask(selectedTask.id, step.id)}
-                className="opacity-0 group-hover:opacity-100 p-0.5 text-slate-400 hover:text-rose-600 transition-opacity cursor-pointer"
+                className="p-1 rounded text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer shrink-0"
+                title={t('delete')}
               >
-                <X className="w-3 h-3" />
+                <Trash2 className="w-3 h-3" />
               </button>
             </div>
           ))}
@@ -191,6 +193,11 @@ export const TaskDrawer: React.FC = () => {
               type="text"
               value={newStepTitle}
               onChange={(e) => setNewStepTitle(e.target.value)}
+              onBlur={() => {
+                if (newStepTitle.trim()) {
+                  handleAddStep()
+                }
+              }}
               placeholder={t('addStep')}
               className="w-full text-xs bg-transparent text-slate-700 placeholder-slate-400 focus:outline-none"
             />
