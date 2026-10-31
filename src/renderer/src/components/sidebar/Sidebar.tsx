@@ -15,6 +15,7 @@ import { useI18n } from '../../i18n/context'
 import { SYSTEM_LIST_IDS } from '@core/domain/entities'
 import { getTodayString } from '../../lib/date-utils'
 import { ProfileModal } from '../profile/ProfileModal'
+import { OnboardingModal } from '../profile/OnboardingModal'
 
 export const Sidebar: React.FC = () => {
   const {
@@ -31,23 +32,38 @@ export const Sidebar: React.FC = () => {
   const [newListName, setNewListName] = useState('')
   const [isCreatingList, setIsCreatingList] = useState(false)
   const [isProfileOpen, setIsProfileOpen] = useState(false)
-  const [userName, setUserName] = useState('Abolfazl')
+  const [isOnboardingOpen, setIsOnboardingOpen] = useState(false)
+  const [userName, setUserName] = useState('')
 
   useEffect(() => {
     const saved = localStorage.getItem('taskora_user_name')
+    const onboarded = localStorage.getItem('taskora_onboarded')
     if (saved) {
       setUserName(saved)
+    } else {
+      setUserName(locale === 'fa' ? 'فضای کاری من' : 'My Workspace')
     }
-  }, [])
+
+    if (!saved && !onboarded) {
+      setIsOnboardingOpen(true)
+    }
+  }, [locale])
 
   const handleSaveUserName = (newName: string) => {
     setUserName(newName)
     localStorage.setItem('taskora_user_name', newName)
   }
 
+  const handleOnboardingComplete = (chosenName: string) => {
+    setUserName(chosenName)
+    localStorage.setItem('taskora_user_name', chosenName)
+    localStorage.setItem('taskora_onboarded', 'true')
+    setIsOnboardingOpen(false)
+  }
+
   const getInitials = (nameStr: string) => {
     const parts = nameStr.trim().split(/\s+/)
-    if (parts.length === 0 || !parts[0]) return 'AN'
+    if (parts.length === 0 || !parts[0]) return 'WS'
     if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase()
     const first = parts[0][0] ?? ''
     const second = parts[1]?.[0] ?? ''
@@ -315,6 +331,12 @@ export const Sidebar: React.FC = () => {
         onClose={() => setIsProfileOpen(false)}
         userName={userName}
         onSaveUserName={handleSaveUserName}
+      />
+
+      {/* Onboarding Welcome Modal */}
+      <OnboardingModal
+        isOpen={isOnboardingOpen}
+        onComplete={handleOnboardingComplete}
       />
     </aside>
   )

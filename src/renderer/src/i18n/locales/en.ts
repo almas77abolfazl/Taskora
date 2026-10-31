@@ -66,5 +66,10 @@ export const en: TranslationDictionary = {
   activeStatus: 'Active',
   totalTasks: 'Total Tasks',
   completedCount: 'Completed',
-  pendingCount: 'Pending'
+  pendingCount: 'Pending',
+
+  welcomeTitle: 'Welcome to Taskora',
+  welcomeSubtitle: 'Let’s personalize your workspace. What should we call you?',
+  getStarted: 'Get Started',
+  skipForNow: 'Continue as Guest'
 }

@@ -74,4 +74,10 @@ export interface TranslationDictionary {
   totalTasks: string
   completedCount: string
   pendingCount: string
+
+  // Onboarding
+  welcomeTitle: string
+  welcomeSubtitle: string
+  getStarted: string
+  skipForNow: string
 }

@@ -66,5 +66,10 @@ export const fa: TranslationDictionary = {
   activeStatus: 'فعال',
   totalTasks: 'کل کارها',
   completedCount: 'انجام شده',
-  pendingCount: 'در انتظار'
+  pendingCount: 'در انتظار',
+
+  welcomeTitle: 'به تسکورا خوش آمدید',
+  welcomeSubtitle: 'بیایید فضای کاری شما را شخصی‌سازی کنیم. نام شما چیست؟',
+  getStarted: 'شروع به کار',
+  skipForNow: 'ورود به عنوان مهمان'
 }
